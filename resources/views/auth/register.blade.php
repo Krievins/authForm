@@ -1,83 +1,90 @@
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-<script>
-    $( function() {
-      $( ".datepicker" ).datepicker({
-          dateFormat: "yy-mm-dd"
-      });
-    } );
-    </script>
-
-<x-guest-layout>
-    <x-auth-card>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Krievins - Registration</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    
+<div class="container">
+    <div class="container__form">
+        <h1 class="container__form-title">
+            Registration
+        </h1>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            {{-- <a href="/">
+                <x-application-logo class="" />
+            </a> --}}
         </x-slot>
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+        
         <form method="POST" action="{{ route('register') }}">
-            @csrf
+        @csrf
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+        <!-- Name -->
+        <div class="container__form-name">
+            <x-label for="name" :value="__('- Name')" />
+            <x-input id="name" class="container__form-name-input" type="text" name="name" :value="old('name')" required autofocus />
+        </div>
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+        {{-- Phone Number --}}
+        <div class="container__form-phone">
+            <label for="phone" class="">{{ __('- Phone') }}</label>
+            <input id="phone" type="text" class="container__form-phone-input @error('phone') is-invalid @enderror" name="phone" required >
+        </div>
 
-            {{-- Phone Number --}}
-            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-            <div class="col-md-6">
-                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" required >
-            </div>
+        {{-- Date Of birth --}}
+        
+        <div class="container__form-birth">
+            <label for="birth_date" class="">{{ __('- Birth Date') }}</label>
+            <input placeholder="YY-MM-DD" id="birth_date" type="text" class="container__form-birth-input datepicker @error('birth_date') is-invalid @enderror" name="birth_date" required >
+        </div>
 
-            {{-- Date Of birth --}}
-            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('birth_date') }}</label>
-            <div class="col-md-6">
-                <input id="birth_date" type="text" class="form-control datepicker @error('birth_date') is-invalid @enderror" name="birth_date" required >
-            </div>
+        <!-- Email Address -->
+        <div class="container__form-email">
+            <x-label for="email" :value="__('- Email')" />
+            <x-input id="email" class="container__form-email-input" type="email" name="email" :value="old('email')" required />
+        </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+        <!-- Password -->
+        <div class="container__form-pasw">
+            <x-label for="password" :value="__('- Password')" />
+            <x-input id="password" class="container__form-pasw-input"
+            type="password" name="password" required autocomplete="new-password" />
+        </div>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+        <!-- Confirm Password -->
+        <div class="container__form-conf">
+            <x-label for="password_confirmation" :value="__('- Confirm Password')"/>
+            <x-input id="password_confirmation" class="container__form-conf-input"
+            type="password" name="password_confirmation" required />
+        </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+        {{-- Login --}}
+        <div class="container__form-login">
+            <a class="container__form-login-link" href="{{ route('login') }}">
+                {{ __('Already registered?') }}
+            </a>
+            <x-button class="container__form-register">
+                {{ __('Register') }}
+            </x-button>
+        </div>
+    </form>
+    </div>
+</div>
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
+   
+    
+    
+</body>
+</html>
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
