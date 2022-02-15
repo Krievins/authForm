@@ -1,3 +1,15 @@
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+    $( function() {
+      $( ".datepicker" ).datepicker({
+          dateFormat: "yy-mm-dd"
+      });
+    } );
+    </script>
+
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -17,6 +29,18 @@
                 <x-label for="name" :value="__('Name')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+            </div>
+
+            {{-- Phone Number --}}
+            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+            <div class="col-md-6">
+                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" required >
+            </div>
+
+            {{-- Date Of birth --}}
+            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('birth_date') }}</label>
+            <div class="col-md-6">
+                <input id="birth_date" type="text" class="form-control datepicker @error('birth_date') is-invalid @enderror" name="birth_date" required >
             </div>
 
             <!-- Email Address -->
