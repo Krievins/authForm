@@ -2,7 +2,10 @@
 @import './variables';
 
 // Page styling Sheets
-
 @import '../../../resources/views/auth/register';
 @import '../../../resources/views/auth/login';
+@import '../../../resources/views/dashboard';
+@import '../../../resources/views/layouts/navigation';
+@import '../../../resources/views/profile/profile';
+@import '../../../resources/views/profile/edit-profile';
 

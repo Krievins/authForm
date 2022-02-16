@@ -1,0 +1,77 @@
+.navigation {
+    width: 15%;
+    height: 100vh;
+    position: fixed;
+    float: left;
+    background-color: $color-dark;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-logo {
+        display: inline-block;
+        margin-top: 20px;
+        color: $color-white;
+        text-decoration: none;
+        font-family: $font-fun;
+        text-align: center;
+        font-size: 30px;
+        border-bottom: 2px solid white;
+        width: 140px;
+        
+
+    } 
+
+    &-logout {
+        position: absolute;
+        color: $color-white;
+        font-family: $font-primary;
+        letter-spacing: 1px;
+        text-decoration: none;
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        transition: $basic-transition;
+        bottom: 20px;
+        left: 20px;
+
+        &-svg {
+            width: 13px;
+            fill: white;
+            padding-right: 7px;
+           
+        }
+
+        &:hover {
+            color: $color-snow;
+        }
+    }
+
+    &-profile {
+        
+        position: absolute;
+        color: $color-white;
+        font-family: $font-primary;
+        letter-spacing: 1px;
+        text-decoration: none;
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        transition: $basic-transition;
+        bottom: 20px;
+        right: 20px;
+
+        &-svg {
+            width: 11px;
+            fill: white;
+            padding-right: 7px;
+           
+        }
+
+        &:hover {
+            color: $color-snow;
+        }
+    }
+}

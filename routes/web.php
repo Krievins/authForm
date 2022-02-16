@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/resources/views/profile/profile', 'UsersController@profile')->name('profile');
+    Route::get('/resources/views/profile/edit-profile', 'UsersController@edit_profile')->name('edit-profile');
+    Route::put('/resources/views/profile/profile', 'UsersController@update')->name('users.update-profile');
+});
+

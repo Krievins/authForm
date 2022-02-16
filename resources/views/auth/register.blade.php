@@ -13,9 +13,9 @@
 </head>
 <body>
     
-<div class="container">
-    <div class="container__form">
-        <h1 class="container__form-title">
+<div class="regist_container">
+    <div class="regist_container__form">
+        <h1 class="regist_container__form-title">
             Registration
         </h1>
         <x-slot name="logo">
@@ -31,60 +31,55 @@
         @csrf
 
         <!-- Name -->
-        <div class="container__form-name">
+        <div class="regist_container__form-name">
             <x-label for="name" :value="__('- Name')" />
-            <x-input id="name" class="container__form-name-input" type="text" name="name" :value="old('name')" required autofocus />
+            <x-input id="name" class="regist_container__form-name-input" type="text" name="name" :value="old('name')" required autofocus />
         </div>
 
         {{-- Phone Number --}}
-        <div class="container__form-phone">
+        <div class="regist_container__form-phone">
             <label for="phone" class="">{{ __('- Phone') }}</label>
-            <input id="phone" type="text" class="container__form-phone-input @error('phone') is-invalid @enderror" name="phone" required >
+            <input id="phone" type="text" class="regist_container__form-phone-input @error('phone') is-invalid @enderror" name="phone" required >
         </div>
 
         {{-- Date Of birth --}}
-        
-        <div class="container__form-birth">
+        <div class="regist_container__form-birth">
             <label for="birth_date" class="">{{ __('- Birth Date') }}</label>
-            <input placeholder="YY-MM-DD" id="birth_date" type="text" class="container__form-birth-input datepicker @error('birth_date') is-invalid @enderror" name="birth_date" required >
+            <input placeholder="YY-MM-DD" id="birth_date" type="text" class="regist_container__form-birth-input datepicker @error('birth_date') is-invalid @enderror" name="birth_date" required >
         </div>
 
         <!-- Email Address -->
-        <div class="container__form-email">
+        <div class="regist_container__form-email">
             <x-label for="email" :value="__('- Email')" />
-            <x-input id="email" class="container__form-email-input" type="email" name="email" :value="old('email')" required />
+            <x-input id="email" class="regist_container__form-email-input" type="email" name="email" :value="old('email')" required />
         </div>
 
         <!-- Password -->
-        <div class="container__form-pasw">
+        <div class="regist_container__form-pasw">
             <x-label for="password" :value="__('- Password')" />
-            <x-input id="password" class="container__form-pasw-input"
+            <x-input id="password" class="regist_container__form-pasw-input"
             type="password" name="password" required autocomplete="new-password" />
         </div>
 
         <!-- Confirm Password -->
-        <div class="container__form-conf">
+        <div class="regist_container__form-conf">
             <x-label for="password_confirmation" :value="__('- Confirm Password')"/>
-            <x-input id="password_confirmation" class="container__form-conf-input"
+            <x-input id="password_confirmation" class="regist_container__form-conf-input"
             type="password" name="password_confirmation" required />
         </div>
 
         {{-- Login --}}
-        <div class="container__form-login">
-            <a class="container__form-login-link" href="{{ route('login') }}">
+        <div class="regist_container__form-login">
+            <a class="regist_container__form-login-link" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
-            <x-button class="container__form-register">
+            <x-button class="regist_container__form-register">
                 {{ __('Register') }}
             </x-button>
         </div>
     </form>
     </div>
 </div>
-
-   
-    
-    
 </body>
 </html>
 
